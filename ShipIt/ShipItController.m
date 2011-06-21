@@ -31,6 +31,18 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
 }
 
 - (void)awakeFromNib {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showInDock"]) {
+        ProcessSerialNumber psn = { 0, kCurrentProcess };
+        // display dock icon
+        TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+        // enable menu bar
+        SetSystemUIMode(kUIModeNormal, 0);
+        // switch to Dock.app
+        [[NSWorkspace sharedWorkspace] launchAppWithBundleIdentifier:@"com.apple.dock" options:NSWorkspaceLaunchDefault additionalEventParamDescriptor:nil launchIdentifier:nil];
+        // switch back
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
+    }
+    
 	[self registerGlobalHotKey];
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 
@@ -50,6 +62,10 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
     [statusItemView release];
 	[statusItem release];
 	[super dealloc];
+}
+
+- (void)applicationDidFinishLaunching {
+    
 }
 
 - (void)createAndEnqueuePackageWithFinderSelection {
