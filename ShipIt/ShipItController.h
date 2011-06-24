@@ -10,6 +10,15 @@
     NSMutableArray *packageQueue;
     PluginController *pluginController;
     
+    IBOutlet NSMenuItem *viewMenu;
+    
+    
+    IBOutlet NSView *noFileSelected;
+    IBOutlet NSView *fileSelected;
+    IBOutlet NSTextField *packageName;
+    IBOutlet NSTextField *packagePath;
+    IBOutlet NSImageView *packageIcon;
+    IBOutlet NSButton *packageButton;
 }
 
 - (IBAction)packageAndShare: (id) sender;
