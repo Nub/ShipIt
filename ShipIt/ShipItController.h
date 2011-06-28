@@ -1,6 +1,5 @@
 #import <Cocoa/Cocoa.h>
 #import "SIStatusItemView.h"
-#import "PluginController.h"
 #import "HotKey/PTHotKey.h"
 
 @interface ShipItController : NSObject {
@@ -9,7 +8,6 @@
     NSStatusItem *statusItem;
     SIStatusItemView *statusItemView;
     NSMutableArray *packageQueue;
-    PluginController *pluginController;
     
     IBOutlet NSMenuItem *viewMenu;
     
