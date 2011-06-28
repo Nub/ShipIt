@@ -109,10 +109,15 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
     NSLog(@"Performing drag operation.");
     if([desiredType isEqualToString:NSFilenamesPboardType]) {
         NSLog(@"Acceptable type.");
+        [viewMenu setView:fileSelected];
         SIPackage *package = [[SIPackage alloc] init];
         NSArray *fileArray = [paste propertyListForType:@"NSFilenamesPboardType"];
         for (id item in fileArray) {
             NSString *path = (NSString *) item;
+            [packagePath setStringValue:path];
+            [packageName setStringValue:[[path lastPathComponent] stringByDeletingPathExtension]];
+            [packageIcon setImage:[[NSWorkspace sharedWorkspace] iconForFile:path]];
+            [packageButton setEnabled:YES];
             NSLog(@"Adding URL to package: %@", path);
             [package addURLToPackage: [NSURL URLWithString: path]];
         }
