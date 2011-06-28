@@ -1,6 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SIStatusItemView.h"
 #import "PluginController.h"
+#import "HotKey/PTHotKey.h"
 
 @interface ShipItController : NSObject {
     @private
@@ -12,11 +13,12 @@
     
 }
 
-- (IBAction)packageAndShare: (id) sender;
-- (void)createAndEnqueuePackageWithFinderSelection;
-
+- (IBAction)packageAndShare: (id)sender;
+- (void)createAndEnqueuePackageWithFinderSelection: (PTHotKey *)hotKey;
+- (void)updateHotKey;
 @end
 
 @interface ShipItController (Private)
-- (void)registerGlobalHotKey;
+    //- (void)registerGlobalHotKey;
+
 @end

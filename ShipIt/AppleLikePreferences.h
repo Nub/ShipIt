@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 @interface AppleLikePreferences : NSObject {
 @private
@@ -16,12 +16,12 @@
     IBOutlet NSView *pluginsView;
     IBOutlet NSView *contentView;
     IBOutlet NSToolbar *myToolbar;
+    IBOutlet SRRecorderControl *shortcutRecorder;
 }
 
 - (IBAction)showGeneral:(id)sender;
 - (IBAction)showPlugins:(id)sender;
 - (IBAction)toggleDockIcon:(id)sender;
-
 - (IBAction)showPrefWindow:(id)sender;
 
 

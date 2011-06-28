@@ -2,7 +2,9 @@
 #import "Finder.h"
 #import "SIPackage.h"
 #import <Carbon/Carbon.h>
+#import "HotKey/PTHotKeyCenter.h"
 
+/*
 OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData);
 
 @implementation ShipItController (Private)
@@ -19,6 +21,7 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
 	RegisterEventHotKey(1, cmdKey + optionKey, myHotKeyID, GetApplicationEventTarget(), 0, &myHotKeyRef);
 }
 @end
+*/
 
 @implementation ShipItController
 
@@ -26,12 +29,15 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
     self = [super init];
     if (self) {
         pluginController = [PluginController sharedInstance];
+        [NSApp setDelegate: self];
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showInDock"]) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([userDefaults boolForKey:@"showInDock"]) {
         ProcessSerialNumber psn = { 0, kCurrentProcess };
         // display dock icon
         TransformProcessType(&psn, kProcessTransformToForegroundApplication);
@@ -43,7 +49,7 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
         [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
     }
     
-	[self registerGlobalHotKey];
+	[self updateHotKey];
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 
 	statusItemView = [[SIStatusItemView alloc] init];
@@ -68,22 +74,7 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
     
 }
 
-- (void)createAndEnqueuePackageWithFinderSelection {
-	FinderApplication *finder = [SBApplication applicationWithBundleIdentifier:@"com.apple.finder"];
-	SBElementArray *selection = [[finder selection] get];
-	
-    SIPackage *package = [[SIPackage alloc] init];
-	NSArray *items = [selection arrayByApplyingSelector:@selector(URL)];
-	for (NSString *item in items) {
-		NSURL *url = [NSURL URLWithString: item];
-        [package addURLToPackage: url];
-	}
-    [packageQueue addObject: package];
-    [self packageAndShare: self];
-    [package release];
-} 
-
-- (IBAction)packageAndShare: (id)sender {
+- (IBAction)packageAndShare:(id)sender {
     NSLog(@"Preparing to package and share.");
     for (id package in packageQueue) {
         if ([package isKindOfClass: [SIPackage class]]) {
@@ -91,6 +82,8 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
         }
     }
 }
+
+#pragma mark Drag Operations
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
     NSLog(@"Drag Entered");
@@ -134,9 +127,42 @@ OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void
     
 }
 
+#pragma mark HotKey Messages
+
+- (void)createAndEnqueuePackageWithFinderSelection:(PTHotKey *)hotKey {
+	FinderApplication *finder = [SBApplication applicationWithBundleIdentifier:@"com.apple.finder"];
+	SBElementArray *selection = [[finder selection] get];
+	
+    SIPackage *package = [[SIPackage alloc] init];
+	NSArray *items = [selection arrayByApplyingSelector:@selector(URL)];
+	for (NSString *item in items) {
+		NSURL *url = [NSURL URLWithString: item];
+        [package addURLToPackage: url];
+	}
+    [packageQueue addObject: package];
+    [self packageAndShare: self];
+    [package release];
+} 
+
+- (void)updateHotKey {
+	PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+    id keyComboPlist = [userDefaults objectForKey: @"GlobalHotKey"];
+    if (keyComboPlist) {
+        PTKeyCombo *keyCombo = [[[PTKeyCombo alloc] initWithPlistRepresentation:keyComboPlist] autorelease];
+        PTHotKey *hotKey = [[[PTHotKey alloc] initWithIdentifier:@"GlobalHotKey" keyCombo:keyCombo] autorelease];
+        [hotKey setTarget:self];
+        [hotKey setAction:@selector(createAndEnqueuePackageWithFinderSelection:)];
+        [hotKeyCenter registerHotKey:hotKey];
+    }
+}
+
 @end
 
+/*
 OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData) {
 	[(ShipItController *)userData createAndEnqueuePackageWithFinderSelection];
 	return noErr;
 }
+*/

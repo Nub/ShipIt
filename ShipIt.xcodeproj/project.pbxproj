@@ -21,6 +21,12 @@
 		143AD9761380C5A500E69CB3 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AD9751380C5A500E69CB3 /* ScriptingBridge.framework */; };
 		144491A8138829620012CE1A /* SIStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1444919F138829620012CE1A /* SIStatusItemView.m */; };
 		144491A9138829620012CE1A /* SIPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 144491A1138829620012CE1A /* SIPackage.m */; };
+		1493A09B13BA1AF3007A1704 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08913BA1AF3007A1704 /* PTHotKey.m */; };
+		1493A09C13BA1AF3007A1704 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08B13BA1AF3007A1704 /* PTHotKeyCenter.m */; };
+		1493A09D13BA1AF3007A1704 /* PTKeyCodeTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08D13BA1AF3007A1704 /* PTKeyCodeTranslator.m */; };
+		1493A09E13BA1AF3007A1704 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */; };
+		1493A11D13BA3BB1007A1704 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */; };
+		1493A11E13BA3BBA007A1704 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */; };
 		14E6192913884C8B0063245E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E6192813884C8B0063245E /* libz.dylib */; };
 		14E6192F1388949E0063245E /* PluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E6192E1388949E0063245E /* PluginController.m */; };
 		14EC5CFB138BEAE200FBA2A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */; };
@@ -37,6 +43,19 @@
 			remoteInfo = ShipIt;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1493A0B713BA2556007A1704 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1493A11E13BA3BBA007A1704 /* ShortcutRecorder.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		143AD92E1380C43000E69CB3 /* ShipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +85,15 @@
 		1444919F138829620012CE1A /* SIStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIStatusItemView.m; sourceTree = "<group>"; };
 		144491A0138829620012CE1A /* SIPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIPackage.h; sourceTree = "<group>"; };
 		144491A1138829620012CE1A /* SIPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIPackage.m; sourceTree = "<group>"; };
+		1493A08813BA1AF3007A1704 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
+		1493A08913BA1AF3007A1704 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKey.m; sourceTree = "<group>"; };
+		1493A08A13BA1AF3007A1704 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
+		1493A08B13BA1AF3007A1704 /* PTHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKeyCenter.m; sourceTree = "<group>"; };
+		1493A08C13BA1AF3007A1704 /* PTKeyCodeTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCodeTranslator.h; sourceTree = "<group>"; };
+		1493A08D13BA1AF3007A1704 /* PTKeyCodeTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCodeTranslator.m; sourceTree = "<group>"; };
+		1493A08E13BA1AF3007A1704 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
+		1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCombo.m; sourceTree = "<group>"; };
+		1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = ShipIt/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		14E6192813884C8B0063245E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14E6192B13887BA90063245E /* SIPackagingPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPackagingPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E6192C138880830063245E /* SIPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -83,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1493A11D13BA3BB1007A1704 /* ShortcutRecorder.framework in Frameworks */,
 				14EC5CFB138BEAE200FBA2A8 /* QuartzCore.framework in Frameworks */,
 				14E6192913884C8B0063245E /* libz.dylib in Frameworks */,
 				143AD9761380C5A500E69CB3 /* ScriptingBridge.framework in Frameworks */,
@@ -124,6 +153,7 @@
 		143AD9311380C43000E69CB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */,
 				14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */,
 				14E6192813884C8B0063245E /* libz.dylib */,
 				143AD9751380C5A500E69CB3 /* ScriptingBridge.framework */,
@@ -147,7 +177,7 @@
 		143AD9381380C43000E69CB3 /* ShipIt */ = {
 			isa = PBXGroup;
 			children = (
-				14A73AE6138C25E1004AEB5F /* Plugins */,
+				1493A08713BA1AF3007A1704 /* HotKey */,
 				1444919D138829620012CE1A /* SIDeliveryPluginProtocol.h */,
 				1444919E138829620012CE1A /* SIStatusItemView.h */,
 				1444919F138829620012CE1A /* SIStatusItemView.m */,
@@ -202,13 +232,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		14A73AE6138C25E1004AEB5F /* Plugins */ = {
+		1493A08713BA1AF3007A1704 /* HotKey */ = {
 			isa = PBXGroup;
 			children = (
+				1493A08813BA1AF3007A1704 /* PTHotKey.h */,
+				1493A08913BA1AF3007A1704 /* PTHotKey.m */,
+				1493A08A13BA1AF3007A1704 /* PTHotKeyCenter.h */,
+				1493A08B13BA1AF3007A1704 /* PTHotKeyCenter.m */,
+				1493A08C13BA1AF3007A1704 /* PTKeyCodeTranslator.h */,
+				1493A08D13BA1AF3007A1704 /* PTKeyCodeTranslator.m */,
+				1493A08E13BA1AF3007A1704 /* PTKeyCombo.h */,
+				1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */,
 			);
-			name = Plugins;
-			path = ShipIt/Plugins;
-			sourceTree = SOURCE_ROOT;
+			path = HotKey;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -220,6 +257,7 @@
 				143AD92A1380C43000E69CB3 /* Sources */,
 				143AD92B1380C43000E69CB3 /* Frameworks */,
 				143AD92C1380C43000E69CB3 /* Resources */,
+				1493A0B713BA2556007A1704 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -322,6 +360,10 @@
 				14E6192F1388949E0063245E /* PluginController.m in Sources */,
 				FAD302B513B0A009000431BE /* AppleLikePreferences.m in Sources */,
 				FAD302B913B0A720000431BE /* LaunchAtLoginController.m in Sources */,
+				1493A09B13BA1AF3007A1704 /* PTHotKey.m in Sources */,
+				1493A09C13BA1AF3007A1704 /* PTHotKeyCenter.m in Sources */,
+				1493A09D13BA1AF3007A1704 /* PTKeyCodeTranslator.m in Sources */,
+				1493A09E13BA1AF3007A1704 /* PTKeyCombo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +458,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ShipIt\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -432,6 +478,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ShipIt\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShipIt/ShipIt-Prefix.pch";
