@@ -100,8 +100,8 @@
         [package release];
     }
     [self packageAndShare: nil];
+     */
     return YES;
-    */
 }
 
 - (void)concludeDragOperation:(id<NSDraggingInfo>)sender {
