@@ -11,6 +11,11 @@
 
 @implementation SIShippingHelper
 
++ (id)helper
+{
+    return [[[SIShippingHelper alloc] init] autorelease];
+}
+
 - (id)init
 {
     self = [super init];
@@ -26,9 +31,9 @@
     [super dealloc];
 }
 
-+ (void)shipPackage:(SIPackage *)aPackage
+- (void)shipPackage:(SIPackage *)aPackage
 {
-    
+    NSLog(@"Processing shipment in new thread.");
 }
 
 @end

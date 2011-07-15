@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1436032013CA623C00F588F1 /* SIShippingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1436031F13CA623C00F588F1 /* SIShippingHelper.m */; };
 		143AD9331380C43000E69CB3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AD9321380C43000E69CB3 /* Cocoa.framework */; };
 		143AD93D1380C43000E69CB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 143AD93B1380C43000E69CB3 /* InfoPlist.strings */; };
 		143AD9401380C43000E69CB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 143AD93F1380C43000E69CB3 /* main.m */; };
@@ -20,7 +21,6 @@
 		143AD9741380C55A00E69CB3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AD9731380C55A00E69CB3 /* Carbon.framework */; };
 		143AD9761380C5A500E69CB3 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AD9751380C5A500E69CB3 /* ScriptingBridge.framework */; };
 		144491A8138829620012CE1A /* SIStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1444919F138829620012CE1A /* SIStatusItemView.m */; };
-		144491A9138829620012CE1A /* SIPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 144491A1138829620012CE1A /* SIPackage.m */; };
 		1493A09B13BA1AF3007A1704 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08913BA1AF3007A1704 /* PTHotKey.m */; };
 		1493A09C13BA1AF3007A1704 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08B13BA1AF3007A1704 /* PTHotKeyCenter.m */; };
 		1493A09D13BA1AF3007A1704 /* PTKeyCodeTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493A08D13BA1AF3007A1704 /* PTKeyCodeTranslator.m */; };
@@ -30,6 +30,8 @@
 		14E6192913884C8B0063245E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E6192813884C8B0063245E /* libz.dylib */; };
 		14E6192F1388949E0063245E /* PluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E6192E1388949E0063245E /* PluginController.m */; };
 		14EC5CFB138BEAE200FBA2A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */; };
+		14FFD8DA13CD15FB0064E582 /* SIPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFD8D913CD15FB0064E582 /* SIPackage.m */; };
+		14FFD8ED13CE7E320064E582 /* shipIt_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FFD8EC13CE7E320064E582 /* shipIt_icon.png */; };
 		FAD302B513B0A009000431BE /* AppleLikePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD302B413B0A009000431BE /* AppleLikePreferences.m */; };
 		FAD302B913B0A720000431BE /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD302B813B0A720000431BE /* LaunchAtLoginController.m */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1436031E13CA623C00F588F1 /* SIShippingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIShippingHelper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1436031F13CA623C00F588F1 /* SIShippingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SIShippingHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		143AD92E1380C43000E69CB3 /* ShipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		143AD9321380C43000E69CB3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		143AD9351380C43000E69CB3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -80,11 +84,9 @@
 		143AD96E1380C48C00E69CB3 /* Finder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
 		143AD9731380C55A00E69CB3 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		143AD9751380C5A500E69CB3 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		1444919D138829620012CE1A /* SIDeliveryPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIDeliveryPluginProtocol.h; sourceTree = "<group>"; };
 		1444919E138829620012CE1A /* SIStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIStatusItemView.h; sourceTree = "<group>"; };
 		1444919F138829620012CE1A /* SIStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIStatusItemView.m; sourceTree = "<group>"; };
-		144491A0138829620012CE1A /* SIPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIPackage.h; sourceTree = "<group>"; };
-		144491A1138829620012CE1A /* SIPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIPackage.m; sourceTree = "<group>"; };
+		144F90EB13BBA1DE00368529 /* SIPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1493A08813BA1AF3007A1704 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
 		1493A08913BA1AF3007A1704 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKey.m; sourceTree = "<group>"; };
 		1493A08A13BA1AF3007A1704 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -95,11 +97,12 @@
 		1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCombo.m; sourceTree = "<group>"; };
 		1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = ShipIt/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		14E6192813884C8B0063245E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		14E6192B13887BA90063245E /* SIPackagingPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPackagingPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		14E6192C138880830063245E /* SIPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E6192D1388949E0063245E /* PluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PluginController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E6192E1388949E0063245E /* PluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PluginController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		14FFD8D813CD15FB0064E582 /* SIPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPackage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		14FFD8D913CD15FB0064E582 /* SIPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SIPackage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		14FFD8EC13CE7E320064E582 /* shipIt_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shipIt_icon.png; sourceTree = "<group>"; };
 		FAD302B313B0A009000431BE /* AppleLikePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLikePreferences.h; sourceTree = "<group>"; };
 		FAD302B413B0A009000431BE /* AppleLikePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleLikePreferences.m; sourceTree = "<group>"; };
 		FAD302B713B0A720000431BE /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
@@ -177,12 +180,11 @@
 		143AD9381380C43000E69CB3 /* ShipIt */ = {
 			isa = PBXGroup;
 			children = (
+				14FFD8DD13CD67640064E582 /* Images */,
+				144F90EB13BBA1DE00368529 /* SIPluginProtocol.h */,
 				1493A08713BA1AF3007A1704 /* HotKey */,
-				1444919D138829620012CE1A /* SIDeliveryPluginProtocol.h */,
 				1444919E138829620012CE1A /* SIStatusItemView.h */,
 				1444919F138829620012CE1A /* SIStatusItemView.m */,
-				144491A0138829620012CE1A /* SIPackage.h */,
-				144491A1138829620012CE1A /* SIPackage.m */,
 				FAD302B313B0A009000431BE /* AppleLikePreferences.h */,
 				FAD302B413B0A009000431BE /* AppleLikePreferences.m */,
 				FAD302B713B0A720000431BE /* LaunchAtLoginController.h */,
@@ -192,10 +194,12 @@
 				143AD96E1380C48C00E69CB3 /* Finder.h */,
 				143AD9471380C43000E69CB3 /* MainMenu.xib */,
 				143AD9391380C43000E69CB3 /* Supporting Files */,
-				14E6192B13887BA90063245E /* SIPackagingPluginProtocol.h */,
-				14E6192C138880830063245E /* SIPluginProtocol.h */,
 				14E6192D1388949E0063245E /* PluginController.h */,
 				14E6192E1388949E0063245E /* PluginController.m */,
+				1436031E13CA623C00F588F1 /* SIShippingHelper.h */,
+				1436031F13CA623C00F588F1 /* SIShippingHelper.m */,
+				14FFD8D813CD15FB0064E582 /* SIPackage.h */,
+				14FFD8D913CD15FB0064E582 /* SIPackage.m */,
 			);
 			path = ShipIt;
 			sourceTree = "<group>";
@@ -245,6 +249,14 @@
 				1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */,
 			);
 			path = HotKey;
+			sourceTree = "<group>";
+		};
+		14FFD8DD13CD67640064E582 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				14FFD8EC13CE7E320064E582 /* shipIt_icon.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +330,7 @@
 				143AD93D1380C43000E69CB3 /* InfoPlist.strings in Resources */,
 				143AD9431380C43000E69CB3 /* Credits.rtf in Resources */,
 				143AD9491380C43000E69CB3 /* MainMenu.xib in Resources */,
+				14FFD8ED13CE7E320064E582 /* shipIt_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +369,6 @@
 				143AD9401380C43000E69CB3 /* main.m in Sources */,
 				143AD96F1380C48C00E69CB3 /* ShipItController.m in Sources */,
 				144491A8138829620012CE1A /* SIStatusItemView.m in Sources */,
-				144491A9138829620012CE1A /* SIPackage.m in Sources */,
 				14E6192F1388949E0063245E /* PluginController.m in Sources */,
 				FAD302B513B0A009000431BE /* AppleLikePreferences.m in Sources */,
 				FAD302B913B0A720000431BE /* LaunchAtLoginController.m in Sources */,
@@ -364,6 +376,8 @@
 				1493A09C13BA1AF3007A1704 /* PTHotKeyCenter.m in Sources */,
 				1493A09D13BA1AF3007A1704 /* PTKeyCodeTranslator.m in Sources */,
 				1493A09E13BA1AF3007A1704 /* PTKeyCombo.m in Sources */,
+				1436032013CA623C00F588F1 /* SIShippingHelper.m in Sources */,
+				14FFD8DA13CD15FB0064E582 /* SIPackage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

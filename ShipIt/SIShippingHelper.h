@@ -13,7 +13,7 @@
 @private
     
 }
-
-+ (void)shipPackage:(SIPackage *)aPackage;
++ (id)helper;
+- (void)shipPackage:(SIPackage *)aPackage;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "PluginController.h"
 
+NSString * const kSIPluginTypeDelivery = @"SIDeliveryPlugin";
+NSString * const kSIPluginTypePackaging = @"SIPackagingPlugin";
+
 @implementation PluginController 
 
 + (PluginController *) sharedInstance 
@@ -29,49 +32,14 @@
     [super dealloc];
 }
 
-
-+ (NSSet *)availableDeliveryPlugins
+- (id<SIPluginProtocol>)packaging
 {
-    NSString *directory = [[[NSBundle mainBundle] bundlePath] stringByAppendingString: @"/Plugins/Delivery"];
-    NSSet *bundledPlugins = [self availablePluginsInDirectory: directory
-                                                  forProtocol: @protocol(SIDeliveryPluginProtocol)];
-    
-    
-    NSSet *userPlugins = [self availablePluginsInDirectory: @"~/Library/Application Support/ShipIt/Plugins/Delivery" 
-                                               forProtocol: @protocol(SIDeliveryPluginProtocol)];
-    return [bundledPlugins setByAddingObjectsFromSet: userPlugins];
+    return nil;
 }
 
-+ (NSSet *)availablePackagingPlugins
+- (NSSet *)destinations 
 {
-    NSString *directory = [[[NSBundle mainBundle] bundlePath] stringByAppendingString: @"/Plugins"];
-    NSSet *bundledPlugins = [self availablePluginsInDirectory: directory
-                                                  forProtocol: @protocol(SIPackagingPluginProtocol)];
-    
-    
-    NSSet *userPlugins = [self availablePluginsInDirectory: @"~/Library/Application Support/ShipIt/Plugins" 
-                                               forProtocol: @protocol(SIPackagingPluginProtocol)];
-    return [bundledPlugins setByAddingObjectsFromSet: userPlugins];
-}
-
-- (NSSet *)selectedDeliveryPlugins
-{
-    return [[deliveryPlugins copy] autorelease];
-}
-
-- (NSSet *)selectedPackagingPlugins
-{
-    return [[packagingPlugins copy] autorelease];
-}
-
-- (void)forDeliveryPluginsPerformSelector:(SEL)aSelector withObject:(id)anArgument 
-{
-    [deliveryPlugins makeObjectsPerformSelector:aSelector withObject:anArgument];
-}
-
-- (void)forPackagingPluginsPerformSelector:(SEL)aSelector withObject:(id)anArgument
-{
-    [packagingPlugins makeObjectsPerformSelector:aSelector withObject:anArgument];
+    return nil;   
 }
 
 @end
@@ -82,25 +50,14 @@
 {
     self = [super init];
     if (self) {
-        deliveryPlugins = [self loadDeliveryPluginsFromPreferences];
-        packagingPlugins = [self loadPackagingPluginsFromPreferences];
+            //LOAD PLUGINS
     }
     return self;
 }
 
-+ (void) initialize 
++ (void)initialize
 {
     [super initialize];
-}
-
-- (NSSet *)loadDeliveryPluginsFromPreferences
-{
-    return nil;
-}
-
-- (NSSet *)loadPackagingPluginsFromPreferences 
-{
-    return nil;
 }
 
 + (NSSet *)availablePluginsInDirectory:(NSString *)aDirectory forProtocol:(Protocol *)aProtocol 

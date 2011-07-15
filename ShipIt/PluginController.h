@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SIDeliveryPluginProtocol.h"
-#import "SIPackagingPluginProtocol.h"
 #import "SIPluginProtocol.h"
+
+extern NSString * const kSIPluginTypeDelivery;
+extern NSString * const kSIPluginTypePackaging;
 
 @interface PluginController : NSObject {
 @private
@@ -17,13 +18,9 @@
     NSSet *packagingPlugins;
 }
 
-+ (PluginController *) sharedInstance;
-+ (NSSet *)availableDeliveryPlugins;
-+ (NSSet *)availablePackagingPlugins;
-- (NSSet *)selectedDeliveryPlugins;
-- (NSSet *)selectedPackagingPlugins;
-- (void)forDeliveryPluginsPerformSelector:(SEL)aSelector withObject:(id)anArgument;
-- (void)forPackagingPluginsPerformSelector:(SEL)aSelector withObject:(id)anArgument;
++ (PluginController *)sharedInstance;
+- (id<SIPluginProtocol>)packaging;
+- (NSSet *)destinations;
 @end
 
 @interface PluginController (PrivateMethods){
@@ -33,8 +30,6 @@
 
 - (id)init;
 + (void)initialize;
-- (NSSet *)loadDeliveryPluginsFromPreferences;
-- (NSSet *)loadPackagingPluginsFromPreferences;
 + (NSSet *)availablePluginsInDirectory:(NSString *)aDirectory forProtocol:(Protocol *)aProtocol;
 
 @end
