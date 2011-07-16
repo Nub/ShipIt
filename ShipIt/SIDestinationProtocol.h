@@ -1,5 +1,5 @@
 //
-//  SIPackagingPlugin.h
+//  SIDestinationProtocol.h
 //  ShipIt
 //
 //  Created by Doomspork on 6/29/11.
@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol SIPluginProtocol <NSObject>
+@protocol SIDestinationProtocol <NSObject>
 + (NSView *)view;
+- (BOOL)deliverFile:(NSString *)aString error:(NSError **)error;
 @end

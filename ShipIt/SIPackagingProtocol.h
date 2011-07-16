@@ -10,5 +10,6 @@
 
 
 @protocol SIPackagingProtocol <NSObject>
-
++ (NSView *)view;
+- (NSString *)pasteboardNameForPackagedFileSet:(NSSet *)aSet error:(NSError **)error;
 @end
