@@ -33,17 +33,17 @@
 
 - (void)addURL:(NSURL *)aURL
 {
-    NSMutableSet *mut = [NSMutableSet setWithSet:items];
+    NSMutableSet *mut = [NSMutableSet setWithSet:contents];
     [mut addObject:aURL];
-    [items release];
-    items = [NSSet setWithSet:mut];
+    [contents release];
+    contents = [NSSet setWithSet:mut];
 }
 
-- (void)setPackaging:(id<SIPluginProtocol>)aPackage
+- (void)setPackager:(id<SIPackagingProtocol>)aPackager
 {
-    [aPackage retain];
-    [packaging release];
-    packaging = aPackage;
+    [aPackager retain];
+    [packager release];
+    packager = aPackager;
 }
 
 - (void)setDestinations:(NSSet *)aSet
@@ -53,14 +53,14 @@
     destinations = aSet;
 }
 
-- (void)addDestination:(id<SIPluginProtocol>)aDestination
+- (void)addDestination:(id<SIDestinationProtocol>)aDestination
 {
     NSMutableSet *mut = [NSMutableSet setWithSet:destinations];
     [mut addObject:aDestination];
     [self setDestinations:mut];
 }
 
-- (void)removeDestination:(id<SIPluginProtocol>)aDestination
+- (void)removeDestination:(id<SIDestinationProtocol>)aDestination
 {
     NSMutableSet *mut = [NSMutableSet setWithSet:destinations];
     if ([mut containsObject:aDestination]) {
@@ -69,5 +69,19 @@
     }
 }
 
+- (id<SIPackagingProtocol>)packager
+{
+    return packager;
+}
+
+- (NSSet *)destinations
+{
+    return destinations;
+}
+
+- (NSSet *)contents;
+{
+    return contents;
+}
 
 @end

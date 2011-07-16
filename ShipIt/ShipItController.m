@@ -70,7 +70,7 @@
     id packaging = [pluginController packaging];
     if ([destinations count] > 0 && package) {
         [package setDestinations:destinations];
-        [package setPackaging:packaging];
+        [package setPackager:packaging];
         SIShippingHelper *helper = [SIShippingHelper helper];
         [NSThread detachNewThreadSelector:@selector(shipPackage:) toTarget:helper withObject:package];
     } else {

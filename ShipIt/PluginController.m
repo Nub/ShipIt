@@ -32,7 +32,7 @@ NSString * const kSIPluginTypePackaging = @"SIPackagingPlugin";
     [super dealloc];
 }
 
-- (id<SIPluginProtocol>)packaging
+- (id<SIPackagingProtocol>)packaging
 {
     return nil;
 }

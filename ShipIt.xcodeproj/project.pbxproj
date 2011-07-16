@@ -86,7 +86,7 @@
 		143AD9751380C5A500E69CB3 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		1444919E138829620012CE1A /* SIStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIStatusItemView.h; sourceTree = "<group>"; };
 		1444919F138829620012CE1A /* SIStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIStatusItemView.m; sourceTree = "<group>"; };
-		144F90EB13BBA1DE00368529 /* SIPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SIPluginProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		144F90EB13BBA1DE00368529 /* SIDestinationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = SIDestinationProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1493A08813BA1AF3007A1704 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
 		1493A08913BA1AF3007A1704 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKey.m; sourceTree = "<group>"; };
 		1493A08A13BA1AF3007A1704 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 		1493A08E13BA1AF3007A1704 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
 		1493A08F13BA1AF3007A1704 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCombo.m; sourceTree = "<group>"; };
 		1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = ShipIt/ShortcutRecorder.framework; sourceTree = "<group>"; };
+		1496C0CE13D149C0004D1656 /* SIPackagingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIPackagingProtocol.h; sourceTree = "<group>"; };
 		14E6192813884C8B0063245E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14E6192D1388949E0063245E /* PluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PluginController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E6192E1388949E0063245E /* PluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PluginController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -181,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				14FFD8DD13CD67640064E582 /* Images */,
-				144F90EB13BBA1DE00368529 /* SIPluginProtocol.h */,
+				144F90EB13BBA1DE00368529 /* SIDestinationProtocol.h */,
 				1493A08713BA1AF3007A1704 /* HotKey */,
 				1444919E138829620012CE1A /* SIStatusItemView.h */,
 				1444919F138829620012CE1A /* SIStatusItemView.m */,
@@ -200,6 +201,7 @@
 				1436031F13CA623C00F588F1 /* SIShippingHelper.m */,
 				14FFD8D813CD15FB0064E582 /* SIPackage.h */,
 				14FFD8D913CD15FB0064E582 /* SIPackage.m */,
+				1496C0CE13D149C0004D1656 /* SIPackagingProtocol.h */,
 			);
 			path = ShipIt;
 			sourceTree = "<group>";

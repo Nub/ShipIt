@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SIPluginProtocol.h"
+#import "SIDestinationProtocol.h"
+#import "SIPackagingProtocol.h"
 
 extern NSString * const kSIPluginTypeDelivery;
 extern NSString * const kSIPluginTypePackaging;
@@ -19,7 +20,7 @@ extern NSString * const kSIPluginTypePackaging;
 }
 
 + (PluginController *)sharedInstance;
-- (id<SIPluginProtocol>)packaging;
+- (id<SIPackagingProtocol>)packaging;
 - (NSSet *)destinations;
 @end
 

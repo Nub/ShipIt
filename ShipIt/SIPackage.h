@@ -7,21 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SIPluginProtocol.h"
+#import "SIPackagingProtocol.h"
+#import "SIDestinationProtocol.h"
 
 @interface SIPackage : NSObject {
 @private
-    NSSet *items;
+    NSSet *contents;
     NSSet *destinations;
-    id<SIPluginProtocol> packaging;
+    id<SIPackagingProtocol> packager;
 }
 
 + (id)package;
 - (void)addURL:(NSURL *)aURL;
-- (void)setPackaging:(id<SIPluginProtocol>)packager;
+- (void)setPackager:(id<SIPackagingProtocol>)packager;
 - (void)setDestinations:(NSSet *)aSet;
-- (void)addDestination:(id<SIPluginProtocol>)aDestination;
-- (void)removeDestination:(id<SIPluginProtocol>)aDestination;
-
+- (void)addDestination:(id<SIDestinationProtocol>)aDestination;
+- (void)removeDestination:(id<SIDestinationProtocol>)aDestination;
+- (id)packager;
+- (NSSet *)destinations;
+- (NSSet *)contents;
 
 @end
