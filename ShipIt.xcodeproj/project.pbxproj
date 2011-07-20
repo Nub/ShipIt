@@ -28,6 +28,9 @@
 		1493A11E13BA3BBA007A1704 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */; };
 		14E6192913884C8B0063245E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E6192813884C8B0063245E /* libz.dylib */; };
 		14EC5CFB138BEAE200FBA2A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */; };
+		4BB84E9913D769920098A3CB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB84E9813D769920098A3CB /* Sparkle.framework */; };
+		4BB84E9E13D76B220098A3CB /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 4BB84E9D13D76B210098A3CB /* dsa_pub.pem */; };
+		4BB84E9F13D76C420098A3CB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BB84E9813D769920098A3CB /* Sparkle.framework */; };
 		FAD302B513B0A009000431BE /* AppleLikePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD302B413B0A009000431BE /* AppleLikePreferences.m */; };
 		FAD302B913B0A720000431BE /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD302B813B0A720000431BE /* LaunchAtLoginController.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +53,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1493A11E13BA3BBA007A1704 /* ShortcutRecorder.framework in CopyFiles */,
+				4BB84E9F13D76C420098A3CB /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +95,8 @@
 		1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = ShipIt/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		14E6192813884C8B0063245E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4BB84E9813D769920098A3CB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ShipIt/Sparkle.framework; sourceTree = "<group>"; };
+		4BB84E9D13D76B210098A3CB /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = "Supporting Files/dsa_pub.pem"; sourceTree = "<group>"; };
 		FAD302B313B0A009000431BE /* AppleLikePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLikePreferences.h; sourceTree = "<group>"; };
 		FAD302B413B0A009000431BE /* AppleLikePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleLikePreferences.m; sourceTree = "<group>"; };
 		FAD302B713B0A720000431BE /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				143AD9761380C5A500E69CB3 /* ScriptingBridge.framework in Frameworks */,
 				143AD9741380C55A00E69CB3 /* Carbon.framework in Frameworks */,
 				143AD9331380C43000E69CB3 /* Cocoa.framework in Frameworks */,
+				4BB84E9913D769920098A3CB /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +151,7 @@
 		143AD9311380C43000E69CB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BB84E9813D769920098A3CB /* Sparkle.framework */,
 				1493A11C13BA3BB1007A1704 /* ShortcutRecorder.framework */,
 				14EC5CFA138BEAE200FBA2A8 /* QuartzCore.framework */,
 				14E6192813884C8B0063245E /* libz.dylib */,
@@ -187,6 +195,7 @@
 		143AD9391380C43000E69CB3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4BB84E9D13D76B210098A3CB /* dsa_pub.pem */,
 				143AD93A1380C43000E69CB3 /* ShipIt-Info.plist */,
 				143AD93B1380C43000E69CB3 /* InfoPlist.strings */,
 				143AD93E1380C43000E69CB3 /* ShipIt-Prefix.pch */,
@@ -302,6 +311,7 @@
 				143AD93D1380C43000E69CB3 /* InfoPlist.strings in Resources */,
 				143AD9431380C43000E69CB3 /* Credits.rtf in Resources */,
 				143AD9491380C43000E69CB3 /* MainMenu.xib in Resources */,
+				4BB84E9E13D76B220098A3CB /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
