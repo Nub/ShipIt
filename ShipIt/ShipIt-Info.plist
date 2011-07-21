@@ -30,9 +30,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>http://update.shipitapp.com/</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
-	<key>SUFeedURL</key>
-	<string>http://codez4mac.com/shipit/update</string>
 </dict>
 </plist>
