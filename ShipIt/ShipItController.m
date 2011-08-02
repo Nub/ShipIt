@@ -3,9 +3,11 @@
 #import <Carbon/Carbon.h>
 #import "HotKey/PTHotKeyCenter.h"
 
+
 @implementation ShipItController
 
-- (ShipItController *)init {
+- (ShipItController *)init 
+{
     self = [super init];
     if (self) {
         [NSApp setDelegate: self];
@@ -13,7 +15,8 @@
     return self;
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib 
+{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     if ([userDefaults boolForKey:@"showInDock"]) {
@@ -29,105 +32,81 @@
     }
     
 	[self updateHotKey];
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH] retain];
 
-	statusItemView = [[SIStatusItemView alloc] init];
-	[statusItemView retain];
-    [statusItemView setDelegate: self];
-    [statusItemView setStatusItem: statusItem];
+    statusItemView = [[SIStatusItemView alloc] initWithStatusItem:statusItem];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shipIt_icon" ofType:@"png"]];
+    NSImage *alternate = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shipIt_icon" ofType:@"png"]];
+    [statusItemView setImage:image];
+    [statusItemView setAlternateImage:alternate];
 	[statusItemView setMenu: statusMenu];
-	[statusItemView setTitle: @"ShipIt!"];
-	
+    [statusItemView setPopover:popover];
+    
+    [image release];
+    [alternate release];
+    
 	[statusItem setView: statusItemView];	
 	[statusItem	setHighlightMode: YES];
 	[statusItem setEnabled: YES];
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
     [statusItemView release];
 	[statusItem release];
 	[super dealloc];
 }
 
-- (void)applicationDidFinishLaunching {
-    
+- (IBAction)packageAndShare:(id)sender 
+{
+	[self createPackageFromFinderSelection];
 }
 
-- (IBAction)packageAndShare:(id)sender {
-    NSLog(@"Preparing to package and share.");
+
+- (void)createPackageFromFinderSelection
+{
+   
 }
 
 #pragma mark Drag Operations
 
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
-    NSLog(@"Drag Entered");
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
+{
     return NSDragOperationCopy;
 }
 
-- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender {
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
+{
     return NSDragOperationCopy;
 }
 
-- (void)draggingExited:(id <NSDraggingInfo>)sender {
-    NSLog(@"Drag Exited");
+- (void)draggingExited:(id <NSDraggingInfo>)sender
+{
+    
 }
 
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
+{
     return YES;
 }
 
-- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
-    /*
-    NSPasteboard *paste = [sender draggingPasteboard];
-    NSArray *types = [NSArray arrayWithObjects:NSFilenamesPboardType, nil];
-    NSString *desiredType = [paste availableTypeFromArray:types];
-    NSLog(@"Performing drag operation.");
-    if([desiredType isEqualToString:NSFilenamesPboardType]) {
-        NSLog(@"Acceptable type.");
-        [viewMenu setView:fileSelected];
-        SIPackage *package = [[SIPackage alloc] init];
-        NSArray *fileArray = [paste propertyListForType:@"NSFilenamesPboardType"];
-        for (id item in fileArray) {
-            NSString *path = (NSString *) item;
-            [packagePath setStringValue:path];
-            [packageName setStringValue:[[path lastPathComponent] stringByDeletingPathExtension]];
-            [packageIcon setImage:[[NSWorkspace sharedWorkspace] iconForFile:path]];
-            [packageButton setEnabled:YES];
-            NSLog(@"Adding URL to package: %@", path);
-            [package addURLToPackage: [NSURL URLWithString: path]];
-        }
-        [packageQueue addObject: package];
-        [package release];
-    }
-    [self packageAndShare: nil];
-     */
-    return YES;
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
+{
+
 }
 
 - (void)concludeDragOperation:(id<NSDraggingInfo>)sender {
-    
 }
 
 #pragma mark HotKey Messages
 
-- (void)createAndEnqueuePackageWithFinderSelection:(PTHotKey *)hotKey {
-	/*
-    FinderApplication *finder = [SBApplication applicationWithBundleIdentifier:@"com.apple.finder"];
-	SBElementArray *selection = [[finder selection] get];
-	
-    SIPackage *package = [[SIPackage alloc] init];
-	NSArray *items = [selection arrayByApplyingSelector:@selector(URL)];
-	for (NSString *item in items) {
-		NSURL *url = [NSURL URLWithString: item];
-        [package addURLToPackage: url];
-	}
-    [packageQueue addObject: package];
-    [self packageAndShare: self];
-    [package release];
-     */
+- (void)performHotKeySelector:(PTHotKey *)hotKey
+{
+	[self createPackageFromFinderSelection];
 } 
 
-- (void)updateHotKey {
+- (void)updateHotKey
+{
 	PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	
@@ -136,16 +115,9 @@
         PTKeyCombo *keyCombo = [[[PTKeyCombo alloc] initWithPlistRepresentation:keyComboPlist] autorelease];
         PTHotKey *hotKey = [[[PTHotKey alloc] initWithIdentifier:@"GlobalHotKey" keyCombo:keyCombo] autorelease];
         [hotKey setTarget:self];
-        [hotKey setAction:@selector(createAndEnqueuePackageWithFinderSelection:)];
+        [hotKey setAction:@selector(performHotKeySelector:)];
         [hotKeyCenter registerHotKey:hotKey];
     }
 }
 
 @end
-
-/*
-OSStatus myHotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData) {
-	[(ShipItController *)userData createAndEnqueuePackageWithFinderSelection];
-	return noErr;
-}
-*/

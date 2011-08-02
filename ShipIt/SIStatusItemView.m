@@ -1,163 +1,184 @@
-//
-//  SIDroppableView.m
-//  ShipIt!
-//
-//  Created by doomspork on 5/14/11.
-//  Copyright 2011 Codez4Mac.com. All rights reserved.
-//
-
 #import "SIStatusItemView.h"
-
 
 @implementation SIStatusItemView
 
-@synthesize statusItem;
-@synthesize delegate;
+@synthesize statusItem = _statusItem;
+@synthesize image = _image;
+@synthesize alternateImage = _alternateImage;
+@synthesize isHighlighted = _isHighlighted;
+@synthesize menu = _menu;
+@synthesize delegate = _delegate;
+@synthesize popover = _popover;
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        statusItem = nil;
-        title = @"";
-		isMenuVisible = NO;
-        isDragActive = NO;
-        [self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+#pragma mark -
+
+- (id)initWithStatusItem:(NSStatusItem *)statusItem
+{
+    CGFloat itemWidth = [statusItem length];
+    CGFloat itemHeight = [[NSStatusBar systemStatusBar] thickness];
+    NSRect itemRect = NSMakeRect(0.0, 0.0, itemWidth, itemHeight);
+    self = [super initWithFrame:itemRect];
+    
+    if (self != nil)
+    {
+        _statusItem = [statusItem retain];
+        _statusItem.view = self;
+        
     }
     return self;
 }
 
-- (void)dealloc {
-    [statusItem release];
-    [title release];
+- (void)dealloc
+{
+    [_statusItem release];
+    [_image release];
+    [_alternateImage release];
+    
     [super dealloc];
 }
-- (void)mouseDown:(NSEvent *)event {
+
+#pragma mark -
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
+    
+    NSImage *icon = self.isHighlighted ? self.alternateImage : self.image;
+    NSSize iconSize = [icon size];
+    NSRect bounds = self.bounds;
+    CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
+    CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
+    NSPoint iconPoint = NSMakePoint(iconX, iconY);
+    [icon compositeToPoint:iconPoint operation:NSCompositeSourceOver];
+}
+
+#pragma mark -
+#pragma mark Mouse tracking
+
+- (void)mouseDown:(NSEvent *)event
+{
     [[self menu] setDelegate:self];
-    [statusItem popUpStatusItemMenu:[self menu]];
+        
+    if(_popover.shown){
+        
+        [_popover close];
+        
+    }else{
+        
+        [_popover showRelativeToRect:[self bounds] ofView:self preferredEdge:NSMaxYEdge];
+    }
+    
     [self setNeedsDisplay:YES];
 }
 
-- (void)rightMouseDown:(NSEvent *)event {
+- (void)rightMouseDown:(NSEvent *)event
+{
     [self mouseDown:event];
 }
 
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setHighlighted:(BOOL)newFlag
+{
+    if (_isHighlighted == newFlag) return;
+    _isHighlighted = newFlag;
+    [self setNeedsDisplay:YES];
+}
+
+#pragma mark -
+
+- (void)setImage:(NSImage *)newImage
+{
+    [newImage retain];
+    [_image release];
+    _image = newImage;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)setAlternateImage:(NSImage *)newImage
+{
+    [newImage retain];
+    [_alternateImage release];
+    _alternateImage = newImage;
+    if (self.isHighlighted)
+        [self setNeedsDisplay:YES];
+}
+
+
+#pragma -
+#pragma mark Menu
+
 - (void)menuWillOpen:(NSMenu *)menu {
-    isMenuVisible = YES;
     [self setNeedsDisplay:YES];
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    isMenuVisible = NO;
     [menu setDelegate:nil];    
     [self setNeedsDisplay:YES];
 }
 
-- (NSColor *)titleForegroundColor {
-    if (isMenuVisible) {
-        return [NSColor whiteColor];
-    } else if (isDragActive) {
-        return [NSColor blueColor];  
-    } else {
-        return [NSColor blackColor];
-    }    
-}
+#pragma -
+#pragma mark Drag tracking
 
-- (NSDictionary *)titleAttributes {
-    // Use default menu bar font size
-    NSFont *font = [NSFont menuBarFontOfSize:0];
-	
-    NSColor *foregroundColor = [self titleForegroundColor];
-	
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            font,            NSFontAttributeName,
-            foregroundColor, NSForegroundColorAttributeName,
-            nil];
-}
-
-- (NSRect)titleBoundingRect {
-    return [title boundingRectWithSize:NSMakeSize(1e100, 1e100)
-                               options:0
-                            attributes:[self titleAttributes]];
-}
-
-- (void)setTitle:(NSString *)newTitle {
-    if (![title isEqual:newTitle]) {
-        [newTitle retain];
-        [title release];
-        title = newTitle;
-		
-        // Update status item size (which will also update this view's bounds)
-        NSRect titleBounds = [self titleBoundingRect];
-        int newWidth = titleBounds.size.width + (2 * StatusItemViewPaddingWidth);
-        [statusItem setLength:newWidth];
-		
-        [self setNeedsDisplay:YES];
-    }
-}
-
-- (void)setTitle:(NSString *)newTitle withColor: (NSColor *)aColor {
-    
-}
-
-- (NSString *)title {
-    return title;
-}
-
-- (void)drawRect:(NSRect)rect {
-    // Draw status bar background, highlighted if menu is showing
-    [statusItem drawStatusBarBackgroundInRect:[self bounds]
-                                withHighlight:isMenuVisible];
-	
-    // Draw title string
-    NSPoint origin = NSMakePoint(StatusItemViewPaddingWidth,
-                                 StatusItemViewPaddingHeight);
-    [title drawAtPoint:origin
-        withAttributes:[self titleAttributes]];
-}
-
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(draggingEntered:)]) {
-        isDragActive = YES;
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(draggingEntered:)]) {
+        _isHighlighted = YES;
         [self setNeedsDisplay: YES];
-        return [delegate draggingEntered: sender];
+        return [_delegate draggingEntered: sender];
     }
     return NSDragOperationNone;
 }
 
-- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(draggingUpdated:)]) {
-        return [delegate draggingUpdated: sender];
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(draggingUpdated:)]) {
+        return [_delegate draggingUpdated: sender];
     }
     return NSDragOperationNone;
 }
 
-- (void)draggingExited:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(draggingExited:)]) {
-        isDragActive = NO;
+- (void)draggingExited:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(draggingExited:)]) {
+        _isHighlighted = NO;
         [self setNeedsDisplay: YES];
-        [delegate draggingExited: sender];
+        [_delegate draggingExited: sender];
     }
 }
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(prepareForDragOperation:)]) {
-        return [delegate prepareForDragOperation: sender];
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(prepareForDragOperation:)]) {
+        return [_delegate prepareForDragOperation: sender];
     }
     return NO;
 }
 
-- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(performDragOperation:)]) {
-        return [delegate performDragOperation: sender];
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(performDragOperation:)]) {
+        return [_delegate performDragOperation: sender];
     }
     return NO;
 }
 
-- (void)concludeDragOperation:(id <NSDraggingInfo>)sender {
-    if ([delegate respondsToSelector:@selector(concludeDragOperation:)]) {
-        [delegate concludeDragOperation: sender];
+- (void)concludeDragOperation:(id <NSDraggingInfo>)sender
+{
+    if ([_delegate respondsToSelector:@selector(concludeDragOperation:)]) {
+        [_delegate concludeDragOperation: sender];
     }
-    isDragActive = NO;
+    _isHighlighted = NO;
     [self setNeedsDisplay: YES];
+}
+
+#pragma mark -
+
+- (NSRect)globalRect
+{
+    NSRect frame = [self frame];
+    frame.origin = [self.window convertBaseToScreen:frame.origin];
+    return frame;
 }
 
 @end

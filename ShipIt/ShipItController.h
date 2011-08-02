@@ -2,12 +2,13 @@
 #import "SIStatusItemView.h"
 #import "HotKey/PTHotKey.h"
 
+#define STATUS_ITEM_VIEW_WIDTH 24.0
+
 @interface ShipItController : NSObject {
     @private
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusItem;
     SIStatusItemView *statusItemView;
-    NSMutableArray *packageQueue;
     
     IBOutlet NSMenuItem *viewMenu;
     
@@ -18,14 +19,12 @@
     IBOutlet NSTextField *packagePath;
     IBOutlet NSImageView *packageIcon;
     IBOutlet NSButton *packageButton;
+    
+    IBOutlet NSPopover *popover;
 }
 
 - (IBAction)packageAndShare: (id)sender;
-- (void)createAndEnqueuePackageWithFinderSelection: (PTHotKey *)hotKey;
+- (void)createPackageFromFinderSelection;
+- (void)performHotKeySelector: (PTHotKey *)hotKey;
 - (void)updateHotKey;
-@end
-
-@interface ShipItController (Private)
-    //- (void)registerGlobalHotKey;
-
 @end

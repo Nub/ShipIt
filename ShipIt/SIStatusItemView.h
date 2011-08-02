@@ -1,27 +1,26 @@
-//
-//  SIDroppableView.h
-//  ShipIt!
-//
-//  Created by doomspork on 5/14/11.
-//  Copyright 2011 Codez4Mac.com. All rights reserved.
-//
 
-#import <Cocoa/Cocoa.h>
-
-#define StatusItemViewPaddingWidth  6
-#define StatusItemViewPaddingHeight 3
-
-@interface SIStatusItemView : NSView <NSMenuDelegate>{
-	NSStatusItem *statusItem;
-	NSString *title;
-    NSObject *delegate;
-	BOOL isMenuVisible;
-    BOOL isDragActive;
+@interface SIStatusItemView : NSView <NSMenuDelegate> {
+@private
+    NSImage *_image;
+    NSImage *_alternateImage;
+    NSStatusItem *_statusItem;
+    NSMenu *_menu;
+    BOOL _isHighlighted;
+    id _delegate;
+    
+    NSPopover *_popover;
 }
-@property (retain) NSObject *delegate;
-@property (retain) NSStatusItem *statusItem;
-@property (retain) NSString *title;
 
-- (void)setTitle:(NSString *)newTitle;
-- (NSString *)title;
+- (id)initWithStatusItem:(NSStatusItem *)statusItem;
+
+@property (nonatomic, readonly) NSStatusItem *statusItem;
+@property (nonatomic, retain) NSImage *image;
+@property (nonatomic, retain) NSMenu *menu;
+@property (nonatomic, retain) NSImage *alternateImage;
+@property (nonatomic, retain) id delegate;
+@property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
+@property (nonatomic, readonly) NSRect globalRect;
+
+@property (nonatomic, retain) NSPopover *popover;
+
 @end

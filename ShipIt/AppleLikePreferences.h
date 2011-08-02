@@ -9,20 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
+#import "LaunchAtLoginController.h"
+
 @interface AppleLikePreferences : NSObject {
 @private
-    IBOutlet NSWindow *prefWindow;
-    IBOutlet NSView *generalView;
-    IBOutlet NSView *pluginsView;
-    IBOutlet NSView *contentView;
-    IBOutlet NSToolbar *myToolbar;
+    
     IBOutlet SRRecorderControl *shortcutRecorder;
+    LaunchAtLoginController *launchAtLogin;
+
 }
 
-- (IBAction)showGeneral:(id)sender;
-- (IBAction)showPlugins:(id)sender;
-- (IBAction)toggleDockIcon:(id)sender;
-- (IBAction)showPrefWindow:(id)sender;
-
+- (IBAction)toggleDockIcon:(NSButton *)checkbox;
+- (IBAction)toggleLaunchAtLogin:(NSButton *)checkbox;
 
 @end
